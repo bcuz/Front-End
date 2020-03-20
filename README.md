@@ -1,2 +1,1 @@
-# Front-End
-This repository will serve as a the front end React application
+Live: https://bubl-app.netlify.com
