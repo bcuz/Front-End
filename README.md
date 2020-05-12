@@ -1,3 +1,3 @@
-Live: https://bubl-ui-kathy.netlify.com
+Live: https://bubl-ui.netlify.com
 
-This is a team project built in the span of 2 weeks. I mostly worked with React as a Front-End Developer.
+This was a team project built in 2 weeks. I was a Front-End Developer working primarily with React/Redux and JWTs.
