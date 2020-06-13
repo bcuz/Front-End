@@ -8,7 +8,7 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const login = credentials => dispatch => {
    dispatch({type: LOGIN_START});
 
-   return axios.post('https://bublapplication.herokuapp.com/students/login', credentials)
+   return axios.post('https://bublapp.herokuapp.com/students/login', credentials)
       .then(res => {
          localStorage.setItem('token', res.data.token);
         console.log(res)
@@ -31,7 +31,7 @@ export const register = (newUser) => dispatch => {
   dispatch({type: REGISTER_START});
   console.log(newUser);  
   
-  return axios.post('https://bublapplication.herokuapp.com/students/register', newUser)
+  return axios.post('https://bublapp.herokuapp.com/students/register', newUser)
   .then(res => {
     console.log(res)
     dispatch({type: REGISTER_SUCCESS});
@@ -52,7 +52,7 @@ export const getBubls = id => dispatch => {
 //   dispatch({type: FETCH_SUCCESS, payload: bubls})
 
    dispatch({type: FETCH_START});
-   axios.get('https://bublapplication.herokuapp.com/threads', {
+   axios.get('https://bublapp.herokuapp.com/threads', {
       headers: { Authorization: localStorage.getItem("token") }})
       .then(res => {
          console.log(res);
@@ -70,7 +70,7 @@ export const FETCH_COMMENTS_FAILURE = "FETCH_COMMENTS_FAILURE";
 export const getComments = id => dispatch => {
 
    dispatch({type: FETCH_COMMENTS_START});
-   axios.get(`https://bublapplication.herokuapp.com/threads/comments/${id}`, {
+   axios.get(`https://bublapp.herokuapp.com/threads/comments/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }})
       .then(res => {
          console.log(res);
@@ -103,7 +103,7 @@ export const addComment = (bublmessage, id) => dispatch => {
    // dispatch({type: ADD_COMMENT_SUCCESS, payload: newBubls});
 
    dispatch({type: ADD_COMMENT_START});
-   return axios.post(`https://bublapplication.herokuapp.com/comment`, bublmessage, {
+   return axios.post(`https://bublapp.herokuapp.com/comment`, bublmessage, {
     headers: { Authorization: localStorage.getItem("token") }
   })
       .then(res => {
@@ -123,7 +123,7 @@ export const getSchools = () => dispatch => {
   dispatch({ type: FETCH_SCHOOL_START });
 
   axios
-  .get("https://bublapplication.herokuapp.com/students", {
+  .get("https://bublapp.herokuapp.com/students", {
     headers: { Authorization: localStorage.getItem("token") }
   })
     .then(res => {    
