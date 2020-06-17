@@ -30,7 +30,7 @@ class Register extends Component {
     e.preventDefault()
     
       this.props.register(this.state.newUser)
-      .then(res => (res === false) ? null : this.props.history.push("/login")      
+      .then(res => (res === false) ? null : this.props.history.push("/schools")      
       );
    }
 
