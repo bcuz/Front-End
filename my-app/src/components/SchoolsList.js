@@ -11,6 +11,8 @@ class SchoolsList extends Component {
   
 
   render() {
+    // all the data is mixed together
+    // so this code pulls out all the unique schools to display on the page
     const schoolDisplayed = [];
 
     return (      
