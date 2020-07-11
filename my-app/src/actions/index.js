@@ -35,7 +35,7 @@ export const register = (newUser) => dispatch => {
   .then(res => {
     console.log(res)
     localStorage.setItem('token', res.data.token);
-    dispatch({type: REGISTER_SUCCESS});
+    dispatch({type: REGISTER_SUCCESS, payload: res.data.id});
   })
   .catch(err => {
         console.log("login error:", err);

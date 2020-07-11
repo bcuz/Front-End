@@ -55,12 +55,14 @@ export default (state = initialState, action) => {
          return {
             ...state,
             registering: true,
+            student_id: null,
             registerError: null,
          }
       }
       case REGISTER_SUCCESS: {
          return {
             ...state,
+            student_id: action.payload,
             registering: false
          }
       }
