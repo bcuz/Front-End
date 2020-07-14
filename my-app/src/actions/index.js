@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_ENDPOINT } from '../config'
 import {schools, bubls} from '../data';
 
 export const LOGIN_START = "LOGIN_START";
@@ -8,7 +9,7 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const login = credentials => dispatch => {
    dispatch({type: LOGIN_START});
 
-   return axios.post('https://bublapp.herokuapp.com/students/login', credentials)
+   return axios.post(`${API_ENDPOINT}/students/login`, credentials)
       .then(res => {
          localStorage.setItem('token', res.data.token);
         console.log(res)
@@ -31,7 +32,7 @@ export const register = (newUser) => dispatch => {
   dispatch({type: REGISTER_START});
   console.log(newUser);  
   
-  return axios.post('https://bublapp.herokuapp.com/students/register', newUser)
+  return axios.post(`${API_ENDPOINT}/students/register`, newUser)
   .then(res => {
     console.log(res)
     localStorage.setItem('token', res.data.token);
@@ -53,7 +54,7 @@ export const getBubls = id => dispatch => {
 //   dispatch({type: FETCH_SUCCESS, payload: bubls})
 
    dispatch({type: FETCH_START});
-   axios.get('https://bublapp.herokuapp.com/threads', {
+   axios.get(`${API_ENDPOINT}/threads`, {
       headers: { Authorization: localStorage.getItem("token") }})
       .then(res => {
          console.log(res);
@@ -71,7 +72,7 @@ export const FETCH_COMMENTS_FAILURE = "FETCH_COMMENTS_FAILURE";
 export const getComments = id => dispatch => {
 
    dispatch({type: FETCH_COMMENTS_START});
-   axios.get(`https://bublapp.herokuapp.com/threads/comments/${id}`, {
+   axios.get(`${API_ENDPOINT}/threads/comments/${id}`, {
       headers: { Authorization: localStorage.getItem("token") }})
       .then(res => {
          console.log(res);
@@ -104,7 +105,7 @@ export const addComment = (bublmessage, id) => dispatch => {
    // dispatch({type: ADD_COMMENT_SUCCESS, payload: newBubls});
 
    dispatch({type: ADD_COMMENT_START});
-   return axios.post(`https://bublapp.herokuapp.com/comment`, bublmessage, {
+   return axios.post(`${API_ENDPOINT}/comment`, bublmessage, {
     headers: { Authorization: localStorage.getItem("token") }
   })
       .then(res => {
@@ -124,7 +125,7 @@ export const getSchools = () => dispatch => {
   dispatch({ type: FETCH_SCHOOL_START });
 
   axios
-  .get("https://bublapp.herokuapp.com/students", {
+  .get(`${API_ENDPOINT}/students`, {
     headers: { Authorization: localStorage.getItem("token") }
   })
     .then(res => {    
