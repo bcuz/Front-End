@@ -2,7 +2,7 @@ const db = require("../dbconfig.js");
 
 module.exports = {
   postThread: async thread => {
-    const [id] = await db("threads").insert(thread);
+    const [id] = await db("threads").returning('id').insert(thread);
 
     return db("threads")
       .where({ id })
