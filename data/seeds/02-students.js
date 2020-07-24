@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
   const hash = bcrypt.hashSync('in', 10);
 
   return knex("students")
-    .del()
+    .truncate()
     .then(function() {
       // Inserts seed entries
       return knex("students").insert([
