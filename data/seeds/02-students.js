@@ -5,9 +5,9 @@ exports.seed = function(knex, Promise) {
 
   const hash = bcrypt.hashSync('in', 10);
 
-  // return knex("students")
-  //   .del()
-  //   .then(function() {
+  return knex("students")
+    .del()
+    .then(function() {
       // Inserts seed entries
       return knex("students").insert([
         {
@@ -38,5 +38,5 @@ exports.seed = function(knex, Promise) {
           password: hash
         }
       ]);
-    // });
+    });
 };
